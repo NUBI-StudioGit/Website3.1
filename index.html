@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NUBIStudio-3.0 | 官方主页</title>
+    <!-- 引入字体图标 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style type="text/css">
+        /* 引入鸿蒙字体 */
+        @font-face {
+            font-family: 'HarmonyOS Sans';
+            src: url('https://cdn.bootcdn.net/ajax/libs/harmonyos-sans/1.0.0/HarmonyOS_Sans_SC_Regular.woff2') format('woff2'),
+                 url('https://cdn.bootcdn.net/ajax/libs/harmonyos-sans/1.0.0/HarmonyOS_Sans_SC_Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'HarmonyOS Sans';
+            src: url('https://cdn.bootcdn.net/ajax/libs/harmonyos-sans/1.0.0/HarmonyOS_Sans_SC_Bold.woff2') format('woff2'),
+                 url('https://cdn.bootcdn.net/ajax/libs/harmonyos-sans/1.0.0/HarmonyOS_Sans_SC_Bold.woff') format('woff');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* 全局样式重置与基础设置 */
+        :root {
+            --primary-color: #3498db;
+            --primary-dark: #2980b9;
+            --secondary-color: #2c3e50;
+            --light-gray: #f0f0f2;
+            --white: #fdfdff;
+            --text-gray: #666;
+            --border-gray: #eee;
+            --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "HarmonyOS Sans", sans-serif;
+        }
+
+        body {
+            text-align: center;
+            background-color: var(--light-gray);
+            padding-top: 60px;
+            line-height: 1.8;
+            color: var(--secondary-color);
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent; /* 移动端点击高亮移除 */
+        }
+
+        /* 头部区域 */
+        .header {
+            margin-bottom: 3rem;
+            padding: 1.5rem 1rem;
+        }
+
+        .header .logo {
+            max-width: 280px;
+            height: auto;
+            transition: transform 0.3s ease;
+            display: block;
+            margin: 0 auto;
+            max-width: clamp(200px, 50vw, 280px); /* 响应式logo */
+        }
+
+        .header .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .header .slogan {
+            font-size: clamp(1rem, 3vw, 1.25rem); /* 响应式字体 */
+            color: var(--text-gray);
+            margin-top: 1rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* 卡片通用样式 */
+        .card {
+            width: 90%;
+            max-width: 600px;
+            margin: 2.5em auto;
+            padding: 3em 2.5em;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid var(--border-gray);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* 业务/开发卡片样式 */
+        .card--content h2 {
+            font-size: clamp(1.5rem, 4vw, 1.8rem);
+            color: var(--secondary-color);
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .card--content h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .card--content .content-list {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .card--content .content-list li {
+            font-size: clamp(1rem, 3vw, 1.15rem);
+            color: var(--text-gray);
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            flex-wrap: wrap; /* 移动端换行 */
+        }
+
+        .card--content .content-list li i {
+            color: var(--primary-color);
+            font-size: clamp(1rem, 3vw, 1.2rem);
+        }
+
+        .card--content a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-weight: 500;
+        }
+
+        .card--content a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        /* 底部卡片样式 */
+        .card--footer {
+            max-width: 1000px;
+            padding: 2.5em 2em;
+            margin-top: 4rem;
+        }
+
+        .card--footer h2 {
+            font-size: clamp(1.4rem, 4vw, 1.6rem);
+            color: var(--secondary-color);
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .card--footer p {
+            font-size: clamp(0.95rem, 3vw, 1rem);
+            color: var(--text-gray);
+            margin: 0.6rem 0;
+        }
+
+        .card--footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .card--footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 40px;
+                line-height: 1.7;
+            }
+
+            .card {
+                width: 95%;
+                padding: 2em 1.5em;
+                margin: 1.8em auto;
+            }
+
+            .card--content .content-list li {
+                gap: 0.6rem;
+            }
+        }
+
+        /* 小屏手机适配 */
+        @media (max-width: 375px) {
+            .card {
+                padding: 1.5em 1em;
+            }
+            
+            .card--content h2::after {
+                width: 50px;
+                height: 2px;
+            }
+        }
+
+        /* 平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部区域 -->
+    <header class="header">
+        <img src="nubi_studio_logo_withe _custom.png" alt="NUBI Studio Logo" class="logo">
+        <p class="slogan">千里之行，始于足下</p>
+    </header>
+
+    <!-- 业务卡片 -->
+    <section class="card card--content">
+        <h2>我们的业务</h2>
+        <ul class="content-list">
+            <li><i class="fas fa-code"></i> Scratch开发</li>
+            <li><i class="fas fa-cogs"></i> C++开发</li>
+            <li><i class="fas fa-tv"></i> NDTV(基于PowerPoint)</li>
+            <li><i class="fas fa-globe"></i> HTML开发(学习中)</li>
+        </ul>
+    </section>
+
+    <!-- 已开发资源卡片 -->
+    <section class="card card--content">
+        <h2>目前已开发</h2>
+        <ul class="content-list">
+            <li><i class="fas fa-usb"></i> 苏维埃U盘: <a href="https://share.weiyun.com/fl09HIHn">微云下载</a></li>
+            <li><i class="fas fa-download"></i> BinWechat: <a href="./download/BinWechat.zip">直接下载</a></li>
+        </ul>
+    </section>
+
+    <!-- 目标卡片 -->
+    <section class="card card--content">
+        <h2>我们的目标</h2>
+        <ul class="content-list">
+            <li><i class="fas fa-rocket"></i> 开发全宇宙最NB的软件</li>
+            <li><i class="fas fa-video"></i> 做最丝滑的模拟电视</li>
+        </ul>
+    </section>
+
+    <!-- 底部卡片 -->
+    <footer class="card card--footer">
+        <h2>温馨提示</h2>
+        <p>本页面建议使用PC端阅读，获得更佳体验</p>
+        <p>© NUBI Studio 官方网站 | 千里之行，始于足下</p>
+        <p><a href="./pages/index.html">页面大杂烩</a></p>
+    </footer>
+</body>
+</html>

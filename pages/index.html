@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pages | NUBI Studio</title>
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style type="text/css">
+        /* 引入鸿蒙字体 */
+        @font-face {
+            font-family: 'HarmonyOS Sans';
+            src: url('https://cdn.bootcdn.net/ajax/libs/harmonyos-sans/1.0.0/HarmonyOS_Sans_SC_Regular.woff2') format('woff2'),
+                 url('https://cdn.bootcdn.net/ajax/libs/harmonyos-sans/1.0.0/HarmonyOS_Sans_SC_Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'HarmonyOS Sans';
+            src: url('https://cdn.bootcdn.net/ajax/libs/harmonyos-sans/1.0.0/HarmonyOS_Sans_SC_Bold.woff2') format('woff2'),
+                 url('https://cdn.bootcdn.net/ajax/libs/harmonyos-sans/1.0.0/HarmonyOS_Sans_SC_Bold.woff') format('woff');
+            font-weight: 600;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* 全局变量 */
+        :root {
+            --primary-color: #9b59b6;
+            --primary-dark: #8e44ad;
+            --secondary-color: #2c3e50;
+            --light-gray: #f0f0f2;
+            --white: #fdfdff;
+            --text-gray: #666;
+            --border-gray: #eee;
+            --shadow-sm: 0 8px 24px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "HarmonyOS Sans", sans-serif;
+        }
+
+        body {
+            text-align: center;
+            background-color: var(--light-gray);
+            padding-top: 60px;
+            line-height: 1.8;
+            color: var(--secondary-color);
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* 头部区域 */
+        .header {
+            margin-bottom: 3rem;
+            padding: 1.5rem 1rem;
+        }
+
+        .header .logo {
+            max-width: clamp(200px, 50vw, 280px);
+            height: auto;
+            transition: transform 0.3s ease;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .header .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .header .title {
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: var(--text-gray);
+            letter-spacing: 0.2em;
+            margin-top: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* 链接卡片样式 */
+        .link-card {
+            width: 90%;
+            max-width: 500px;
+            margin: 2.5em auto;
+            padding: 3em 2.5em;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid var(--border-gray);
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .link-card h2 {
+            font-size: clamp(1.5rem, 4vw, 1.8rem);
+            color: var(--secondary-color);
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .link-card h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .link-card .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+            margin: 1rem 0;
+            font-weight: 600;
+            min-width: clamp(150px, 40vw, 180px); /* 响应式按钮宽度 */
+            font-size: clamp(1rem, 3vw, 1.1rem);
+        }
+
+        .link-card .btn:hover {
+            background-color: var(--primary-dark);
+            box-shadow: 0 4px 12px rgba(155, 89, 182, 0.3);
+        }
+
+        .link-card p {
+            font-size: clamp(1rem, 3vw, 1.15rem);
+            color: var(--text-gray);
+            margin-top: 0.5rem;
+        }
+
+        /* 底部卡片 */
+        .footer-card {
+            width: 90%;
+            max-width: 1000px;
+            margin: 4rem auto 3rem;
+            padding: 2.5em 2em;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-gray);
+        }
+
+        .footer-card h2 {
+            font-size: clamp(1.4rem, 4vw, 1.6rem);
+            color: var(--secondary-color);
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-card p {
+            font-size: clamp(0.95rem, 3vw, 1rem);
+            color: var(--text-gray);
+            margin: 0.6rem 0;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 40px;
+                line-height: 1.7;
+            }
+
+            .link-card, .footer-card {
+                width: 95%;
+                padding: 2em 1.5em;
+                margin: 1.8em auto;
+            }
+
+            .link-card h2::after {
+                width: 60px;
+                height: 2.5px;
+            }
+        }
+
+        /* 小屏手机适配 */
+        @media (max-width: 375px) {
+            .link-card, .footer-card {
+                padding: 1.5em 1em;
+            }
+            
+            .link-card .btn {
+                padding: 0.7rem 1.5rem;
+            }
+        }
+
+        /* 平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部区域 -->
+    <header class="header">
+        <img src="nubi_studio_logo_withe_custom.png" alt="NUBI Studio Logo" class="logo">
+        <h4 class="title">P A G E S</h4>
+    </header>
+
+    <!-- 官网链接卡片 -->
+    <section class="link-card">
+        <h2>NUBI Studio</h2>
+        <a href="https://nubistudio.dpdns.org" class="btn"><i class="fas fa-home"></i> 访问官网</a>
+        <p>NUBI Studio的官方网站</p>
+    </section>
+
+    <!-- 下载资源卡片 -->
+    <section class="link-card">
+        <h2>NDonwload</h2>
+        <a href="https://download.nubistudio.dpdns.org" class="btn"><i class="fas fa-download"></i> 下载资源</a>
+        <p>下载NUBI Studio发布的资源</p>
+    </section>
+
+    <!-- 神秘链接卡片 -->
+    <section class="link-card">
+        <h2>神秘链接（无害！）</h2>
+        <a href="./fraud/index.html" class="btn"><i class="fas fa-mystery"></i> 点击探索</a>
+        <p>神秘的链接......</p>
+    </section>
+
+    <!-- 底部卡片 -->
+    <footer class="footer-card">
+        <h2>温馨提示</h2>
+        <p>本页面建议使用PC端阅读，获得更佳体验</p>
+        <p>NUBI Studio官方网站 | 千里之行，始于足下</p>
+        <p>Powered by NUBI Studio</p>
+    </footer>
+</body>
+</html>
